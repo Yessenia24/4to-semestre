@@ -1,0 +1,104 @@
+/* ===== ESTILOS PERSONALIZADOS SOBRE Bootstrap ===== */
+
+/* Colores personalizados */
+.btn-primary {
+  background-color: #ff6b35;
+  border-color: #ff6b35;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  background-color: #ff8c60;
+  border-color: #ff8c60;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+}
+
+/* Animación título principal */
+.titulo-principal {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideInUp 1s ease-out, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes slideInUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px rgba(255, 107, 53, 0.5); }
+  to { text-shadow: 0 0 20px rgba(255, 107, 53, 0.8); }
+}
+
+/* Cards con efectos hover */
+.sombra-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.sombra-card:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+/* Background gradient header */
+.bg-gradient {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+/* Texto colapsable */
+.texto-colapsable {
+  border-left: 5px solid #ff6b35;
+  animation: slideInLeft 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Footer enlaces */
+.enlace-footer {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.enlace-footer:hover {
+  color: #ff6b35 !important;
+  text-decoration: underline;
+}
+
+/* Texto pequeño */
+.pequeño { font-size: 0.85rem; }
+
+/* ===== MEDIA QUERIES PERSONALIZADAS ===== */
+@media (max-width: 768px) {
+  .titulo-principal {
+    font-size: 2.2rem;
+  }
+  
+  .navbar {
+    background: linear-gradient(45deg, #ff6b35, #ff8c60) !important;
+  }
+  
+  .sombra-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    background-color: #fffaf5;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+}
