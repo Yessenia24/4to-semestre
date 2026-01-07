@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Bienvenidos a Mi Página</h1>
+        <nav>
+            <ul>
+                <li><a href="#principal">Principal</a></li>
+                <li><a href="#multimedia">Multimedia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="principal">
+            <h2>Introducción.</h2>
+            <p>Esta es una página de ejemplo con <strong>contenido importante</strong> y texto en <em>formato especial</em>.</p>
+            <h3>Detalles adicionales</h3>
+            <p>Puedes aprender a usar etiquetas semánticas como <code>&lt;header&gt;</code> y <code>&lt;main&gt;</code>.</p>
+        </section>
+
+        <section id="multimedia">
+            <h2>Contenido Multimedia</h2>
+            <article>
+                <h3>Imagen</h3>
+                <img width="200" src= "tag-semantici-cover-cover.jpg" alt="tag-semantici-cover-cover.jpg" />
+            </article>
+            <article>
+                <h3>Video</h3>
+                <video controls width="320" height="240">
+                    <source src="video/WhatsApp Video 2025-12-10 at 3.14.05 PM.mp4" type="video/WhatsApp Video 2025-12-10 at 3.14.05 PM.mp4" />
+                </video>
+            </article>
+        </section>
+
+        <section id="listas">
+            <h2>Listas</h2>
+            <h3>Lista ordenada</h3>
+            <ol>
+                <li>Primer elemento</li>
+                <li>Segundo elemento</li>
+                <li>Tercer elemento</li>
+            </ol>
+
+            <h3>Lista desordenada</h3>
+            <ul>
+                <li>Elemento A</li>
+                <li>Elemento B</li>
+                <li>Elemento C</li>
+            </ul>
+        </section>
+
+        <section id="enlaces">
+            <h2>Enlaces</h2>
+            <p>Visita <a href="https://www.example.com" target="_blank" rel="noopener noreferrer">Example.com</a> para más información.</p>
+        </section>
+
+        <section id="tabla">
+            <h2>Tabla de ejemplo</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Suri</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Carla</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Keiko</td>
+                        <td>24</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contacto">
+            <h2>Formulario de contacto</h2>
+            <form>
+                <label for="nombre">Nombre:</label><br />
+                <input type="text" id="nombre" name="nombre" required /><br />
+
+                <label for="correo">Correo:</label><br />
+                <input type="email" id="correo" name="correo" required /><br />
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Página Web</p>
+    </footer>
+</body>
+</html>

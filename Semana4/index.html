@@ -1,0 +1,38 @@
+import datetime
+
+class Ternero:
+    def __init__(self, id_arete, fecha_nacimiento, peso_inicial, raza):
+        self.id_arete = id_arete
+        self.fecha_nacimiento = datetime.datetime.strptime(fecha_nacimiento, "%Y-%m-%d")
+        self.peso_inicial = peso_inicial
+        self.raza = raza
+        self.historial_pesos = [(datetime.datetime.now(), peso_inicial)]
+        self.estado_salud = "Saludable"
+        self.vacunas = []
+
+    def registrar_peso(self, nuevo_peso):
+        fecha_actual = datetime.datetime.now()
+        self.historial_pesos.append((fecha_actual, nuevo_peso))
+        print(f"Peso registrado para {self.id_arete}: {nuevo_peso}kg")
+
+    def calcular_ganancia_diaria(self):
+        if len(self.historial_pesos) < 2:
+            return 0
+        
+        # Diferencia entre el primer y último registro
+        primero = self.historial_pesos[0]
+        ultimo = self.historial_pesos[-1]
+        
+        dias = (ultimo[0] - primero[0]).days
+        if dias == 0: return 0
+        
+        ganancia_total = ultimo[1] - primero[1]
+        return ganancia_total / dias
+
+    def __str__(self):
+        return f"Ternero {self.id_arete} | Raza: {self.raza} | Salud: {self.estado_salud}"
+
+# Ejemplo de uso:
+mi_ternero = Ternero("GT-450", "2023-10-01", 35.5, "Holstein")
+mi_ternero.registrar_peso(42.0)
+print(f"Ganancia diaria promedio: {mi_ternero.calcular_ganancia_diaria():.2f} kg/día")
