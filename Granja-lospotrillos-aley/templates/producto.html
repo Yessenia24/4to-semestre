@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Productos - {{ nombre|capitalize }}{% endblock %}
+
+{% block content %}
+    <h2>Sección de: {{ nombre|capitalize }}</h2>
+    <p>Usted está consultando nuestro catálogo de <strong>{{ nombre }}</strong> en Granja Los Potrillos Aley.</p>
+    <p>Garantizamos calidad y excelente genética en cada ejemplar.</p>
+    <a href="{{ url_for('home') }}">Ir a la página principal</a>
+{% endblock %}
