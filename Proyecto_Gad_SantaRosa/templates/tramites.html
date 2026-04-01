@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Trámites del GAD Santa Rosa</h2>
+    <ul>
+        {% for t in tramites %}
+            <li>
+                <strong>{{ t.tipo }}</strong> - Estado: 
+                {% if t.estado == 'Completado' %}
+                    <span style="color: green; font-weight: bold;">{{ t.estado }}</span>
+                {% else %}
+                    <span style="color: orange; font-weight: bold;">{{ t.estado }}</span>
+                {% endif %}
+                | Fecha: {{ t.fecha }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
