@@ -1,31 +1,30 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from logica import GestionInventario # Importamos tu clase POO
 
 app = Flask(__name__)
+gestion = GestionInventario() # Instanciamos el objeto
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/ciudadanos')
-def ciudadanos():
-    lista_ciudadanos = [
-        {'cedula': '1500123456', 'nombre': 'Keiko Yanacallo', 'contacto': '0987654321', 'direccion': 'San José'},
-        {'cedula': '1500987654', 'nombre': 'Yessenia Rodriguez', 'contacto': '0982521271', 'direccion': 'El Chaco'}
-    ]
-    return render_template('ciudadanos.html', ciudadanos=lista_ciudadanos)
+# RUTA PARA MOSTRAR (READ)
+@app.route('/servicios')
+def servicios():
+    datos = gestion.mostrar_todos() # Usamos el método de la clase
+    return render_template('servicios.html', servicios=datos)
 
-@app.route('/tramites')
-def tramites():
-    lista_tramites = [
-        {'tipo': 'Uso de Suelo', 'estado': 'Completado', 'fecha': '2026-03-20'},
-        {'tipo': 'Certificado', 'estado': 'Pendiente', 'fecha': '2026-03-25'}
-    ]
-    return render_template('tramites.html', tramites=lista_tramites)
+# RUTA PARA AÑADIR (CREATE)
+@app.route('/crear_servicio', methods=['POST'])
+def crear_servicio():
+    nombre = request.form.get('nombre')
+    costo = request.form.get('costo')
+    estado = request.form.get('estado')
+    gestion.añadir_producto(nombre, costo, estado)
+    return redirect(url_for('servicios'))
 
-# AGREGA ESTA PARTE PARA QUITAR EL ERROR
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
+# RUTA PARA ELIMINAR (DELETE)
+@app.route('/eliminar/<int:id>')
+def eliminar(id):
+    gestion.eliminar_por_id(id)
+    return redirect(url_for('servicios'))
