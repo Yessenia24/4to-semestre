@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0" style="border-radius: 20px;">
+                <div class="card-header bg-success text-white text-center py-4">
+                    <h2 class="mb-0 font-weight-bold"><i class="fas fa-file-signature"></i> Envío de Oficios</h2>
+                    <p class="mb-0">GAD Parroquial Santa Rosa - Atención Ciudadana</p>
+                </div>
+                <div class="card-body p-5">
+                    <form action="{{ url_for('guardar_oficio') }}" method="POST">
+                        <div class="form-group mb-4">
+                            <label class="h6 font-weight-bold text-dark">Número de Cédula:</label>
+                            <input type="text" name="cedula" class="form-control form-control-lg border-success" placeholder="Ingrese su cédula" required>
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label class="h6 font-weight-bold text-dark">Asunto del Oficio:</label>
+                            <select name="tipo" class="form-control form-control-lg border-success">
+                                <option>Petición de Obra Pública</option>
+                                <option>Solicitud de Ayuda Social</option>
+                                <option>Mantenimiento Vial</option>
+                                <option>Uso de Canchas/Espacios</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="h6 font-weight-bold text-dark">Descripción Detallada:</label>
+                            <textarea name="detalle" class="form-control border-success" rows="6" placeholder="Explique su solicitud aquí..." required></textarea>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-success btn-lg btn-block shadow-sm py-3">
+                                <i class="fas fa-paper-plane mr-2"></i> ENVIAR SOLICITUD AL GAD
+                            </button>
+                            <a href="{{ url_for('index') }}" class="btn btn-link text-muted mt-2">Cancelar y volver</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,8 +1,100 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Inicio - GAD{% endblock %}
+{% block title %} Inicio - GAD Santa Rosa {% endblock %}
+
+<a href="{{ url_for('nuevo_oficio') }}" class="btn btn-warning">
+   <i class="fas fa-plus-circle"></i> Ingresar Oficio Ciudadano
+</a>
 
 {% block content %}
-    <h2>Bienvenido al Portal del GAD Santa Rosa</h2>
-    <p>Desde aquí podrá gestionar trámites, pagos y registros de ciudadanos de la parroquia.</p>
+<div class="container-fluid p-0">
+    <div class="d-flex align-items-center justify-content-center" 
+         style="background: #ffffff; border-bottom: 4px solid #ffcc00; overflow: hidden;">
+        <img src="{{ url_for('static', filename='img/logotipo_pricipal.png') }}" 
+             alt="Gobierno Parroquial Santa Rosa" 
+             style="width: 100%; max-height: 180px; object-fit: contain; display: block;">
+    </div>
+</div>
+
+<div id="carruselInicio" class="carousel slide carousel-fade shadow" data-ride="carousel" data-interval="4000">
+    <ol class="carousel-indicators">
+        <li data-target="#carruselInicio" data-slide-to="0" class="active"></li>
+        <li data-target="#carruselInicio" data-slide-to="1"></li>
+        <li data-target="#carruselInicio" data-slide-to="2"></li>
+    </ol>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='img/carrucel1.png') }}" 
+                 class="d-block w-100" style="height: 550px; object-fit: cover;" alt="Santa Rosa 1">
+            <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                <h2 class="display-4 font-weight-bold">Bienvenidos a Santa Rosa</h2>
+                <p class="lead">Naturaleza y cultura en el corazón del Chaco.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/carrucel2.png') }}" 
+                 class="d-block w-100" style="height: 550px; object-fit: cover;" alt="Santa Rosa 2">
+            <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                <h2 class="display-4 font-weight-bold">Gestión y Transparencia</h2>
+                <p class="lead">Trabajando por el bienestar de nuestra parroquia.</p>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/carrucel3.png') }}" 
+                 class="d-block w-100" style="height: 550px; object-fit: cover;" alt="Santa Rosa 3">
+            <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,0.5); border-radius: 10px;">
+                <h2 class="display-4 font-weight-bold">Un Encanto Natural</h2>
+                <p class="lead">Descubre la belleza de nuestra tierra.</p>
+            </div>
+        </div>
+    </div>
+
+    <a class="carousel-control-prev" href="#carruselInicio" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </a>
+    <a class="carousel-control-next" href="#carruselInicio" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+    </a>
+</div>
+
+<div class="container py-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0 p-4" style="border-top: 5px solid #ffcc00; border-radius: 10px;">
+                <i class="fas fa-users fa-3x text-warning mb-3"></i>
+                <h4 class="font-weight-bold text-success">Ciudadanos</h4>
+                <p class="text-muted small">Registros oficiales de la parroquia.</p>
+                <a href="{{ url_for('ciudadanos') }}" class="btn btn-sm btn-outline-success">Ver Ciudadanos</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0 p-4" style="border-top: 5px solid #ffcc00; border-radius: 10px;">
+                <i class="fas fa-file-alt fa-3x text-warning mb-3"></i>
+                <h4 class="font-weight-bold text-success">Trámites</h4>
+                <p class="text-muted small">Gestión de servicios en línea.</p>
+                <a href="{{ url_for('servicios') }}" class="btn btn-sm btn-outline-success">Ver Trámites</a>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow-sm border-0 p-4" style="border-top: 5px solid #ffcc00; border-radius: 10px;">
+                <i class="fas fa-file-pdf fa-3x text-warning mb-3"></i>
+                <h4 class="font-weight-bold text-success">Reportes</h4>
+                <p class="text-muted small">Generar informes institucionales.</p>
+                <a href="{{ url_for('reporte_pdf') }}" class="btn btn-sm btn-outline-success">Descargar PDF</a>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4"> <div class="card h-100 shadow-sm border-0 p-4" style="border-top: 5px solid #82c91e; border-radius: 10px;">
+        <i class="fas fa-edit fa-3x text-warning mb-3"></i>
+        <h4 class="font-weight-bold text-success">Ingresar Oficio</h4>
+        <p class="text-muted small">Envíe sus peticiones directamente al GAD.</p>
+        <a href="{{ url_for('nuevo_oficio') }}" class="btn btn-sm btn-outline-success">Redactar Oficio</a>
+    </div>
+</div>
+    </div>
+</div>
 {% endblock %}

@@ -1,60 +1,62 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %} Servicios Municipales - GAD Santa Rosa {% endblock %}
 
 {% block content %}
-<div style="text-align: center; font-family: Arial, sans-serif;">
-    <h2 style="color: #2980b9; margin-bottom: 20px;">Gestión de Servicios GAD Santa Rosa</h2>
-
-    <div style="margin-bottom: 30px; padding: 20px; border: 2px solid #2980b9; border-radius: 10px; display: inline-block; background-color: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <form action="/crear_servicio" method="POST">
-            <input type="text" name="nombre" placeholder="Nombre del trámite" required 
-                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;">
-            
-            <input type="text" name="costo" placeholder="Cédula del Ciudadano" required 
-                   style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;">
-            
-            <select name="estado" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-right: 10px;">
-                <option value="Pendiente">Pendiente</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
-            </select>
-            
-            <button type="submit" style="background-color: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
-                + Agregar
-            </button>
-        </form>
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <div>
+            <h2 class="text-success font-weight-bold mb-0">Servicios Municipales</h2>
+            <p class="text-muted">Gestión de trámites y solicitudes ciudadanas</p>
+        </div>
+        <a href="{{ url_for('reporte_pdf') }}" class="btn btn-danger shadow-sm">
+            <i class="fas fa-file-pdf"></i> Generar Reporte General
+        </a>
     </div>
 
-    <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border: 1px solid #2980b9;">
-        <thead>
-            <tr style="background-color: #2980b9; color: #ffffff;">
-                <th style="padding: 12px; border: 1px solid #ffffff;">ID</th>
-                <th style="padding: 12px; border: 1px solid #ffffff;">Nombre del Trámite</th>
-                <th style="padding: 12px; border: 1px solid #ffffff;">Cédula Relacionada</th>
-                <th style="padding: 12px; border: 1px solid #ffffff;">Estado</th>
-                <th style="padding: 12px; border: 1px solid #ffffff;">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for t in lista_tramites %}
-            <tr style="border-bottom: 1px solid #dddddd; text-align: center;">
-                <td style="padding: 12px; color: #2c3e50;">{{ t[0] }}</td> <td style="padding: 12px; color: #2c3e50;">{{ t[1] }}</td> <td style="padding: 12px; color: #2c3e50;">{{ t[4] }}</td> <td style="padding: 12px;">
-                    <span style="padding: 5px 10px; border-radius: 15px; color: white; font-size: 0.9em; background-color: {% if t[3] == 'Activo' %}#27ae60{% elif t[3] == 'Pendiente' %}#f39c12{% else %}#e74c3c{% endif %};">
-                        {{ t[3] }}
-                    </span>
-                </td>
-                <td style="padding: 12px;">
-                    <a href="{{ url_for('editar_tramite', id=t[0]) }}" 
-                       style="color: #2980b9; text-decoration: none; font-weight: bold; margin-right: 10px;">Editar</a>
-                    <span style="color: #ccc;">|</span>
-                    <a href="{{ url_for('eliminar_tramite', id=t[0]) }}" 
-                       onclick="return confirm('¿Estás seguro de eliminar este registro?')" 
-                       style="color: #e74c3c; text-decoration: none; font-weight: bold; margin-left: 10px;">
-                       Eliminar
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="row">
+        {% for tramite in lista_tramites %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 shadow-sm border-0" style="border-radius: 15px; overflow: hidden;">
+                <div style="height: 10px; background-color: {% if tramite[3] == 'Pendiente' %}#ffc107{% else %}#28a745{% endif %};"></div>
+                
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="badge {% if tramite[3] == 'Pendiente' %}badge-warning{% else %}badge-success{% endif %} p-2">
+                            {{ tramite[3] }}
+                        </span>
+                        <small class="text-muted">ID: #{{ tramite[0] }}</small>
+                    </div>
+                    
+                    <h5 class="card-title font-weight-bold text-dark mt-2">
+                        <i class="fas fa-file-invoice text-success mr-2"></i> {{ tramite[2] }}
+                    </h5>
+                    
+                    <p class="card-text mb-1"><strong>Cédula:</strong> {{ tramite[1] }}</p>
+                    <hr>
+                    
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ url_for('editar_tramite', id=tramite[0]) }}" class="btn btn-outline-primary btn-sm mr-2">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <a href="{{ url_for('eliminar_tramite', id=tramite[0]) }}" 
+                           class="btn btn-outline-danger btn-sm" 
+                           onclick="return confirm('¿Está seguro de eliminar este trámite?')">
+                            <i class="fas fa-trash-alt"></i> Eliminar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col-12 text-center py-5">
+            <div class="alert alert-info py-4 shadow-sm">
+                <i class="fas fa-info-circle fa-2x mb-3"></i>
+                <h4>No hay trámites registrados</h4>
+                <p>Actualmente no existen servicios en la base de datos.</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
