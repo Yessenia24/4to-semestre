@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh; font-family: Arial, sans-serif;">
+    <div style="background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 8px solid #2980b9; width: 350px; text-align: center;">
+        
+        <h2 style="color: #2c3e50; margin-bottom: 10px;">Acceso al Sistema</h2>
+        <p style="color: #7f8c8d; font-size: 0.9em; margin-bottom: 25px;">GAD Parroquial Santa Rosa</p>
+
+        <form action="/login" method="POST">
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label style="display: block; margin-bottom: 5px; color: #2980b9; font-weight: bold;">Correo Electrónico:</label>
+                <input type="email" name="email" placeholder="ejemplo@correo.com" required 
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 25px; text-align: left;">
+                <label style="display: block; margin-bottom: 5px; color: #2980b9; font-weight: bold;">Contraseña:</label>
+                <input type="password" name="password" placeholder="********" required 
+                       style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box;">
+            </div>
+
+            <button type="submit" style="width: 100%; background-color: #27ae60; color: white; border: none; padding: 12px; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: bold; transition: background 0.3s;">
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+        
+        <p style="font-size: 0.8em; color: #95a5a6;">
+            &copy; 2026 - Universidad Estatal Amazónica
+        </p>
+    </div>
+</div>
+{% endblock %}

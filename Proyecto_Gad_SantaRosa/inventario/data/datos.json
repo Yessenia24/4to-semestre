@@ -1,0 +1,27 @@
+[
+    {
+        "nombre": "maquinaria",
+        "costo": "50",
+        "estado": "Activo"
+    },
+    {
+        "nombre": "suelo",
+        "cedula": "20",
+        "servicio": "Activo"
+    },
+    {
+        "nombre": "maquinaria",
+        "cedula": "50",
+        "servicio": "Activo"
+    },
+    {
+        "nombre": "alquiler",
+        "cedula": "1500725906",
+        "servicio": "Activo"
+    },
+    {
+        "nombre": "prestamos de sillas",
+        "cedula": "1550561867",
+        "servicio": "Activo"
+    }
+]

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Editar Trámite #{{ tramite[0] }}</h2>
+
+<form action="{{ url_for('actualizar_tramite', id=tramite[0]) }}" method="POST">
+    <label>Tipo de Trámite:</label><br>
+    <input type="text" name="nombre" value="{{ tramite[1] }}" required><br><br>
+    
+    <label>Cédula del Ciudadano:</label><br>
+    <input type="text" name="cedula" value="{{ tramite[4] }}" required><br><br>
+    
+    <label>Estado:</label><br>
+    <select name="estado">
+        <option value="Pendiente" {% if tramite[3] == 'Pendiente' %}selected{% endif %}>Pendiente</option>
+        <option value="Activo" {% if tramite[3] == 'Activo' %}selected{% endif %}>Activo</option>
+        <option value="Inactivo" {% if tramite[3] == 'Inactivo' %}selected{% endif %}>Inactivo</option>
+    </select><br><br>
+    
+    <button type="submit">Guardar Cambios</button>
+    <a href="{{ url_for('servicios') }}">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Registros - GAD Santa Rosa{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Información Almacenada (Persistencia)</h2>
+    <p>Los siguientes datos se encuentran guardados en SQLite y archivos planos.</p>
+
+    <table border="1" style="width:100%; border-collapse: collapse; margin-top: 20px;">
+        <thead style="background-color: #2c3e50; color: white;">
+            <tr>
+                <th>ID</th>
+                <th>Nombre / Servicio</th>
+                <th>Costo / Cédula</th>
+                <th>Estado / Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in lista %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>{{ item.cedula }}</td>
+                <td>{{ item.servicio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top: 30px;">
+        <a href="{{ url_for('index') }}" class="btn">Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,27 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Gestión de Ciudadanos{% endblock %}
-
 {% block content %}
-    <h2>Registro de Ciudadanos</h2>
-    <table border="1" style="width:100%; border-collapse: collapse;">
-        <thead>
-            <tr style="background-color: #f2f2f2;">
-                <th>Cédula</th>
-                <th>Nombre</th>
-                <th>Contacto</th>
-                <th>Dirección</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for c in ciudadanos %}
-            <tr>
-                <td>{{ c.cedula }}</td>
-                <td>{{ c.nombre }}</td>
-                <td>{{ c.contacto }}</td>
-                <td>{{ c.direccion }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<h2>Gestión de Ciudadanos - GAD Santa Rosa</h2>
+
+<table border="1" style="width:100%; border-collapse: collapse;">
+    <thead style="background-color: #34495e; color: white;">
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Dirección</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in ciudadanos %}
+        <tr>
+            <td>{{ c[0] }}</td> <td>{{ c[1] }}</td> <td>{{ c[2] }}</td> <td>{{ c[3] }}</td> </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

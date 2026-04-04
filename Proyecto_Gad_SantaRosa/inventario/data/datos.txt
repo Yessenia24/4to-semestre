@@ -1,0 +1,7 @@
+Nombre: suelo, Costo: 30, Estado: Activo
+Nombre: alquiler, Costo: 20, Estado: Activo
+maquinaria, 50, Activo
+suelo - 20 - Activo
+maquinaria - 50 - Activo
+alquiler - 1500725906 - Activo
+prestamos de sillas - 1550561867 - Activo
